@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/amazonLogo"
+            android:layout_width="137dp"
+            android:layout_height="66dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@drawable/amazon_logo"
+            android:maxWidth="250dp"
+            android:maxHeight="150dp"
+            android:src="@drawable/amazon_logo" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="0" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textSize="54sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="32dp"/>
+
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:background="@drawable/edittext_border"
+
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:background="@drawable/edittext_border"
+
+            android:inputType="textPassword"
+            android:layout_marginTop="8dp" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_weight="0" />
+        <CheckBox
+            android:id="@+id/showPasswordCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show password"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="16dp"
+
+            />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="0" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signInButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textAllCaps="false"
+            android:background="@drawable/button_flat"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        />
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#4A4848"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New to Amazon?"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#4A4848"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/createAccountButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create a new Amazon account"
+            android:textAllCaps="false"
+            android:background="@drawable/button_flat_2"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+    </LinearLayout>
+</layout>
