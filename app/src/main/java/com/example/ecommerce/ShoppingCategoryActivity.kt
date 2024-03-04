@@ -16,7 +16,7 @@ class ShoppingCategoryActivity : AppCompatActivity() {
 
         // Retrieve the logged-in username
         val sharedPref = getSharedPreferences("AppUserPrefs", MODE_PRIVATE)
-        val loggedInUsername = sharedPref.getString("LOGGED_IN_USERNAME", "User")
+        val loggedInUsername = sharedPref.getString("USERNAME", "User")
         binding.welcomeTextView.text = "Welcome, $loggedInUsername"
 
         // Setup listeners for your category buttons
