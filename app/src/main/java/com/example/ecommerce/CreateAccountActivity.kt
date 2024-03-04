@@ -8,11 +8,7 @@ import com.example.ecommerce.databinding.ActivityCreateAccountBinding
 
 class CreateAccountActivity : AppCompatActivity() {
 
-    // Binding object instance with access to the views in the activity_create_account.xml layout
     private lateinit var binding: ActivityCreateAccountBinding
-
-    // Dummy user store for the purpose of the example
-    private val registeredUsers = mutableMapOf<String, String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,16 +21,18 @@ class CreateAccountActivity : AppCompatActivity() {
             val password = binding.passwordEditText.text.toString()
 
             if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
-                if (email in registeredUsers) {
-                    Toast.makeText(this, "Account already exists with this email", Toast.LENGTH_SHORT).show()
-                } else {
-                    // Here you should add proper validation and then add the user to your user store
-                    registeredUsers[email] = password
-                    Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
-                    // After account creation, you might want to send the user to the SignInActivity
-                    val intent = Intent(this, SignInActivity::class.java)
-                    startActivity(intent)
+                // Save the user's email and password to SharedPreferences
+                val sharedPref = getSharedPreferences("AppUserPrefs", MODE_PRIVATE)
+                with(sharedPref.edit()) {
+                    putString("USERNAME", username)
+                    putString(email, password) // Use email as key for password
+                    apply()
                 }
+
+                Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
+                // Navigate to SignInActivity
+                val intent = Intent(this, SignInActivity::class.java)
+                startActivity(intent)
             } else {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             }

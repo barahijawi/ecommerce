@@ -9,7 +9,6 @@ import com.example.ecommerce.databinding.ActivitySignInBinding
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInBinding
-    private val registeredUsers = mutableMapOf("user@example.com" to "password123")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +22,17 @@ class SignInActivity : AppCompatActivity() {
         val username = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
 
-        if (registeredUsers[username] == password) {
-            // Successful login, navigate to ShoppingCategoryActivity
+        val sharedPref = getSharedPreferences("AppUserPrefs", MODE_PRIVATE)
+        val savedPassword = sharedPref.getString(username, null)
+
+        if (password == savedPassword) {
+            // Save the logged-in username for later use
+            with(sharedPref.edit()) {
+                putString("LOGGED_IN_USERNAME", username)
+                apply()
+            }
+
+            // Successful login
             val intent = Intent(this, ShoppingCategoryActivity::class.java)
             startActivity(intent)
         } else {

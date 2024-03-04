@@ -1,6 +1,5 @@
 package com.example.ecommerce
 
-
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,12 +14,17 @@ class ShoppingCategoryActivity : AppCompatActivity() {
         binding = ActivityShoppingCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Retrieve the logged-in username
+        val sharedPref = getSharedPreferences("AppUserPrefs", MODE_PRIVATE)
+        val loggedInUsername = sharedPref.getString("LOGGED_IN_USERNAME", "User")
+        binding.welcomeTextView.text = "Welcome, $loggedInUsername"
+
         // Setup listeners for your category buttons
-        // Assuming buttons are named in your layout file
-        binding.homeKitchenButton.setOnClickListener { showToast("Home & Kitchen") }
-        binding.beautyCareButton.setOnClickListener { showToast("Beauty & Personal Care") }
-        binding.petSuppliesButton.setOnClickListener { showToast("Pet Supplies") }
-        binding.toysGamesButton.setOnClickListener { showToast("Toys & Games") }
+        binding.linearLayoutHomeKitchen.setOnClickListener { showToast("Home & Kitchen") }
+        binding.linearLayoutBeautyCare.setOnClickListener { showToast("Beauty & Personal Care") }
+        binding.linearLayoutPetSupplies.setOnClickListener { showToast("Pet Supplies") }
+        binding.linearLayoutToysGames.setOnClickListener { showToast("Toys & Games") }
+
     }
 
     private fun showToast(category: String) {
